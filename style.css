@@ -1,0 +1,58 @@
+.bot-container {
+  background: url("https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png")
+    no-repeat center;
+  background-size: 100% auto;
+  font-family: "Gayathri", sans-serif, Helvetica, sans-serif;
+  position: absolute;
+}
+@media (max-width: 700px) {
+  .bot-container {
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+  }
+}
+.modal {
+  height: 80%;
+}
+.modal-content {
+  text-align: center;
+  color: hsl(202, 99%, 30%);
+}
+.bot-bg {
+  min-width: 320px;
+  text-align: center;
+  color: white;
+}
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+}
+.row {
+  margin: 20% 0;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.btn-primary {
+  background-color: #016098;
+  border-radius: 20px;
+  color: white;
+  font-size: 1em;
+  height: 62px;
+  left: 627px;
+  width: 173px;
+  margin: 10px;
+  border: 1px solid;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(214, 211, 211, 0.2),
+    0 6px 20px 0 rgba(241, 241, 241, 0.19);
+}
