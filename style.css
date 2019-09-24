@@ -1,3 +1,25 @@
+/* <<<<<<< mybranch
+body, html{
+    height: 100%;
+}
+.bg{
+    /* The image used */
+    background-image: url("https://res.cloudinary.com/dlfbw1snm/image/upload/v1569272085/Group_ssy7oh_s0o1jz.png");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+p{
+    font-size: 1.5em;
+    position: absolute;
+    top: 200px;
+======= */
 .bot-container {
   background: url("https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png")
     no-repeat center;
