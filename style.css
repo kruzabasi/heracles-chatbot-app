@@ -56,3 +56,16 @@ h1 {
   box-shadow: 0 8px 16px 0 rgba(214, 211, 211, 0.2),
     0 6px 20px 0 rgba(241, 241, 241, 0.19);
 }
+.bot-container{
+
+}
+.bot-bg{
+    background: url('https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png');
+    width: 100%;
+    min-height: 100%;
+}
+
+.bot-content{
+    margin: 20% 0;
+    text-align: center;
+}
