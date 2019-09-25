@@ -8,67 +8,56 @@
     <link rel="stylesheet" href="style.css">
      <title>Heracles Chatbot</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
     <body>
-        <div class="container-fluid ">
-                <!-- Bot Container  -->
-            <div class="bot">
-                <!-- Bot Header  -->
-                <div class="bot-header">
-                    <span>
-                        <img class="heracles-logo" src="https://res.cloudinary.com/benjee/image/upload/v1569363700/Group_3_tds6h9.svg" alt="Heracles">
-                    </span>
-                    <button type="button" class="close" data-dismiss="modal" id="exit">&times;</button>
-                </div>
-                <!-- Bot Conversation -->
-                <div class="bot-conversation">
-                    <!-- Bot Reply -->
-                    <div class="bot-reply animated slideInLeft delay-1s">
-                        <p> 
-                            Hi i'm Nemean, how can i help you?
-                        </p>
-                    </div>
-                    <!-- Human Reply -->
-                    <div class="human-reply animated slideInRight delay-1s">
-                        <p> 
-                            What's your name??
-                        </p>
-                        <p> 
-                            how does the hng internship work? and how can i access it?
-                        </p>
-                    </div>    
-                </div>
-                <!-- User Input -->
-                <div class="bot-input">
-                    <div class="type-message">
-                        <input id="input" class="message" type="text" placeholder="Talk to me..." autocomplete="off"/>
-                    </div>
-                    <div class="bot-send">
-                        <button type="button" class="btn"><img class="send-message" src="https://res.cloudinary.com/benjee/image/upload/v1569363670/happiness_1_csnpdy.svg" alt="send"></button>  
-                        <button type="button" class="btn"><img class="emoji" src="https://res.cloudinary.com/benjee/image/upload/v1569363681/Vector_1_tifsle.svg" alt="send"></button>
-                    </div>
-                </div>
-            </div>    
-            </div>
+        <div class="container-fluid bot-container">
+            <div class="bot-bg">
+                <div class="row ">
+                    <div class="col bot-content">
+                        <h1>This is our BOT!</h1>
+                        <p>Asks me what you’d like to know about HNGi6</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Get Started</button>
+                        <!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+                    </div>
+                  </div>
+            </div>
+            
+        </div>        
+
+    <body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="/script.js"></script>
 </body>
 </html>
 
-<!-- <span class="modal-title logo">
-        <img src="https://res.cloudinary.com/benjee/image/upload/v1569363700/Group_3_tds6h9.svg" alt="Heracles">
-    </span>
-    <div class="modal-footer">
-            <input type="text" name="message" id="message" placeholder="Ask us about HNGi6">
-            <button type="button" class="btn"><img src="https://res.cloudinary.com/benjee/image/upload/v1569363670/happiness_1_csnpdy.svg" alt="send"></button>  
-            <button type="button" class="btn"><img src="https://res.cloudinary.com/benjee/image/upload/v1569363681/Vector_1_tifsle.svg" alt="send"></button>
-        </div>
-        <button type="button" class="close" data-dismiss="modal"><img class='cancel' src="https://res.cloudinary.com/benjee/image/upload/v1569363689/Vector_d5dfbw.svg" alt="cancel"></button> -->
+
+
 
 <!-- <div id="main">
     <div>You: <span id="user"></span></div>
