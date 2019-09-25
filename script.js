@@ -4,7 +4,7 @@ const brains= [
     'rive/brain.rive'
 //  'anyotherbrainfile.rive'
 ];
-//bot.loadDirectory(dirName).then(botReady).catch(botNotReady);
+bot.loadDirectory(./topics).then(botReady).catch(botNotReady);
 bot.loadFile(brains).then(botReady).catch(botNotReady);
 
 const message_containers=document.querySelector('.messages');
