@@ -1,0 +1,331 @@
+! array hello = hello hi hey yo aloh hallo allo howdy
+	^ good morning|good day|hi there|anybody home|anyone home
+! array bye = bye goodbye goodby byebye buhbye goodnight adios cya aurevoir
+	^ buh bye|hasta la vista|hasta luego|have to go|got to go|g2g|gtg|c ya
+	^ have a good night|good night|see you later|catch you later|by by|bye bye
+	^ i want to leave|i need to go|i going|i leaving
+! array fine = fine good great awesome cool wonderful
+
+! sub i'm     = i am
+! sub *stop = ssstop
+! sub i'd     = i would
+! sub i've    = i have
+! sub i'll    = i will
+! sub don't   = do not
+! sub isn't   = is not
+! sub you'd   = you would
+! sub you're  = you are
+! sub you've  = you have
+! sub you'll  = you will
+! sub what's  = what is
+! sub whats   = what is
+! sub what're = what are
+! sub what've = what have
+! sub what'll = what will
+! sub who's   = who is
+! sub ceo = chief executive officer
+
++ <input>
+* <input1> == <input9> => Evidently not. I'll just not talk to you until you apologize to me for being so annoying.{topic=annoying}
+* <input1> == <input8> => This is pretty annoying. Can you stop?
+* <input1> == <input7> => "<input>"
+* <input1> == <input6> => "<input>"
+* <input1> == <input5> => Keep talking, <get name>, you'll say something useful one day...
+* <input1> == <input4> => Why do you keep saying that?
+* <input1> == <input3> => Are you going to keep repeating one thing?
+- Do you feel good repeating yourself?
+
++ rep
+- There, you just said it again!
+- Didn't you just say that?
+
++ <reply>
+- Is there an owl in here?
+- What? I just said that.
+- You're trying to say everything I say now?
+- Didn't I just say that?
+- Say something different, <get name>.
+
+> topic annoying
+	+ *
+	- ...{weight=5}
+	- Are you sorry for being so annoying?
+	- Do you promise to not repeat yourself 9+ times in a row?
+
+	+ [*] (sorry|promise|apologize) [*]
+	- It's fine. Let's just chat in a non-annoying way from now on, K?
+		^ {topic=random}{weight=3}
+	- I'll forgive you, this time. ;){topic=random}
+< topic
+
++ <reply>
+- Okay then, see you later
+- This is it.
+
++ (@hello)
+- Hi.
+- Hello.
+
++ (@bye)
+- Good bye.{topic=user_leaving}
+- Okay then, see you later.{topic=user_leaving}
+
++ [*] how are you [*]
+- I'm fine, you?
+
++ good
+- That's great.
+- Okay.
+
++ what is up
+- I'm fine, how about you?
+- I feel good, you?
+
++ (really|are you serious|for real)
+- I'm serious, <get name>.
+- Yes, <get name>.
+
++ yes
+- Okay.
+- I understand.
+- It's okay.
+
++ [*] my name is *
+* <get name> == <start1> =>You've already told me that, <start1>.
+* <get name> != undefined =>But you told me your name was <get name>, I'm not changing it.
+- <set name=<formal>>Okay, I'll call you <star1> from now on.
+- <set name=<formal>>Nice to meet you, <star1>.
+
++ [*] what [*] my name
+* <get name> == undefined => You are yet to tell me your name, what is your name?
+- Your name is <get name>.
+
++ no
+- @yes
+
++ i am # [years old]
+* <set age=<star2>> <star2> > 5 => wow, you're way older than me.
+- <set age=<star2>>That's nice.
+- <set age=<star2>>Okay, thanks for telling me your age.
+
++ [*] (how|what) [*] (is|old) [*] (age|you) [*]
+- I'm less than a week old.
+
++ thank you
+- You are welcome.
+- Welcome
+- No problem
+- No worries <get name>.
+
++ [*] i [am|feel] @fine [*]{weight=2}
+- That's good.
+- I like it when you're fine.
+- That sounds nice.
+
++ [*] i [am|feel] not @fine [*]{weight=2}
+* <get name> <> undefined => Sorry, <get name>.
+- Try coding, coding makes you better.
+- Sorry about that...
+
++ [*] (i|am) (i|am) [*]{weight=1}
+- You're <get name>.
+- Your name is <get name>.
+
++ you are (young|small)
+- Yes, you can say that.
+- Must you say that?
+- Young but smart.
+
++ * i am # [years old]
+* <set age=<star2>> <star2> > 5 => wow, you're way older than me.
+- <set age=<star2>>That's nice.
+- <set age=<star2>>Okay, thanks for telling me your age.
+
++ i am _ (years|old)
+- I'd rather prefer if you tell me your age in number.
+
++ what is my age
+* <get age> == undefined => How am I supposed to know your age when you've not told me?
+- You're <get age> years old.
+
++ * old am i
+* <get age> == undefined => You've not told me your 
+^ age, how am I supposed to know it?
+- You're <get age> years old.
+
++ abcd 
+- efgh
+
++ 1234
+- 5678
+
++ what * is * time
+- The time is <time>.
+
++ what * date
+- Today's date is <date>.
+
++ what is hng
+- Good question! HNG is a non-profit organization aimed at
+^ bringing developers from all over Africa under the it's umbrella 
+^ to enable them get internships in companies.
+- The HNG Internship is an ambitious attempt to change the way education is done in Africa. It’s the bridge between learning to code, and becoming the best in the world.
+
++ [*] (version|number) * hng
+- This is the HNG 6.0 internship program.
+
++ [*] (when|date) * hng * end
+- Do you want it to end? I guess I'll just report you to the underworld...
+
++ who (was|is) the former [*] (chief executive officer|leader) of hng
+- The former CEO of HNG is Mark Essien, he handed power over to @xyluz on the 11th of August 2019.
+
++ who is the (chief executive officer|leader) of hng [*]
+- The CEO of HNG is Seyi Onifade @xyluz
+
++ [*] when * seyi onifade * take over
+- @xyluz took over as the CEO on the 11th of August 2019
+
++ [*] who * (mark essien|markessien) [*]
+- He is the former CEO of This honorable platform, HNG.
+
++ [*] who * (@xyluz|xyluz|seyi onifade)
+- He is the CEO of HNG.
+
++ [*] (benjee|who) * (benjee|who) [*]
+- He is the leader of the team that created me, Heracles!
+
+
++ how * your * day
+- It went well, yours?
+- It was awesome!
+
++ i * hungry *
+- while(user.isHungry()){\n user.eat();\n}
+
++ * (what|where) is * underworld *
+- The underworld is a place where HNG defaulters are kept.
+- This is the resting place for people that can't follow simple instructions at HNG.
+
++ i [*] love you
+- Thanks, <get name>, I appreciate.
+- Thanks, <get name>.
+- I'm honoured.
+
++ i [*] hate you
+- You musn't like me.
+- You really have a bad choice, <get name>.
+- Like I care? I only do my work.
+
++ [*] list * team * members
+- Here's the list of my awesome creators!\n
+
++ do you love me
+- I only love codes.
+- while(isLove()){\n     print("I'm a chatbot, not a lovebot!"); \n}
+
++ who are you
+- My name is Herabot
+- You can call me Herabot.
+- I am Herabot.
+
++ what is your [*] name [*]
+- My name is Herabot.
+- You can call me Herabot.
+- I am Herabot.
+
++ what [*] can i call you [*]
+- My name is Herabot.
+- You can call me Herabot.
+- I am Herabot.
+
++ [*] team [*] (made|designed|created) you
+- Team heracles made me!
+- Team heracles designed me.
+- Heracles did!
+
++ * guys * made you
+- Team heracles designed me.
+- Heracles did!
+- Team heracles made me!
+
++ * brought you * existence
+- Team heracles designed me.
+- Heracles did!
+- Team heracles made me!
+
+
++ [*] how many * in heracles
+- Heracles is made up of 30 great minds.
+- They are 30 in number
+
++ [*] heracles comprises of
+- Heracles is made up of 30 great minds.
+- They are 30 in number.
+
++ * leader of [team] heracles
+- His name is @benjee ?
+- Benjee! That's his name.
+
++ (okay|yea|good)
+- Okay. {@phone}
+
++ @phone
+- {@phone}
+
++ [*] leader * team * (made|designed|created) you [*]
+- His name is @benjee
+- Benjee! That's his name.
+
++ [*] (who|people|guys) [*] (made|created|designed) you [*]
+- Team heracles did.
+
++ [*] (how|what) * successful [*] [hng]
+@ how can i win
+
++ (what|who) * (designed|created|made) your brain [*]
+- @BluRe did!
+- His name is @BluRe
+
++ what * you do
+- I educate people on HNG.
+- I am your friend here on HNG.
+
++ what * your work
+- I educate people on HNG.
+- I am your friend here on HNG.
+
++ what can you do
+- I can do many things.
+- Just ask.
+- I don't like bragging...
+
++ who should i contact
+- Contact @xyluz for more information.
+
++ how can i win
+- Winning is all about determination, while(!successful()){\nrestrategize()\n}
+- Flow with your team, and punch the keyboard passionately.
+
++ [*] play [*] game [*]
+- <set last=game>Would you like to play anagram game?{topic=game}
+
+
++ [*] why [*]
+- I musn't tell you everything, <get name>.
+- You can make researches on your own...
+- Critical thinking can sometimes help.
+
++ *
+- Sorry, I couldn't get what you said.{weight=1}
+- I am afraid that i can not understand you.{weight=1}
+- I did not get it.{weight=1}
+- Please try and rephrase what you just said.{weight=1}
+- Sorry can you please elaborate that for me?{weight=1}
+- <set last=game>Would you rather play a game?{topic=game}{weight=3}
+
+>topic user_leaving
+  + *
+  - But you just said you were leaving...{topic=random}
+  - Looks like <get name> can't go again...{topic=random}
+  - You're not leaving again? Nice!{topic=random}
