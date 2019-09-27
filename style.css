@@ -1,93 +1,181 @@
-/* <<<<<<< mybranch
-body, html{
-    height: 100%;
+body{
+    background: url('https://res.cloudinary.com/benjee/image/upload/v1569416479/Group_3_kz2uek.png');
+    font-family: 'Be Vietnam', sans-serif;
 }
-.bg{
-    /* The image used */
-    background-image: url("https://res.cloudinary.com/dlfbw1snm/image/upload/v1569272085/Group_ssy7oh_s0o1jz.png");
-  
-    /* Full height */
-    height: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
+::-webkit-scrollbar{
+    display: none;
 }
-p{
-    font-size: 1.5em;
-    position: absolute;
-    top: 200px;
-======= */
-.bot-container {
-  background: url("https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png")
-    no-repeat center;
-  background-size: 100% auto;
-  font-family: "Gayathri", sans-serif, Helvetica, sans-serif;
-  position: absolute;
-}
-@media (max-width: 700px) {
-  .bot-container {
-    background-size: 100%;
+* {
+    font-family: Arial;
+    font-size: 12pt;
+   }
+   .bot-conversation{
+       display: grid;
+       grid-template-columns: 1fr;
+   }
+   .chat {
+       display: grid;
+       grid-template-columns: 1fr;
+       background: #fff;
+    /* width: 350px; */
+    height: 341px;
+    padding: 10px;
+    overflow: scroll;
+   }
+   .messages div {
+    max-width: 200px;
+    display: block;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 15px;
+    word-wrap: break-word;
+   }
+   .messages .bot {
+    text-align: left;
+    margin-right: auto;
+    background: #DDD;
+    color: black;
+    word-wrap: break-word;
+   }
+   .messages .self {
+    text-align: right;
+    margin-left: 50%;
+    background: #4A022C;
+    word-wrap: break-word;
+    color: white;
+   }
+   
+   .actions {
+    position: fixed;
+    left: auto;
+    right: auto;
+    bottom: auto; 
+    display: block;
+    background: none;
+    max-width: 200px;
+    width: auto;
+    /* height: 40px; */
+    /* padding: 0 0px; */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 50px;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-  }
-}
+    justify-content: space-between;   
+   }
+   .actions input{ 
+    /* padding: 10px; */
+    background: none;
+    display: block;
+    width: 250px;
+    outline: 0;
+    border: none;
+    margin-left:10px; 
+   }
+   .btn{
+       border: none;
+       background: none;
+       margin-left: 90px;
+       outline: none;
+   }
+
+
+/* The Modal (background) */
 .modal {
-  height: 80%;
-}
-.modal-content {
-  text-align: center;
-  color: hsl(202, 99%, 30%);
-}
-.bot-bg {
-  min-width: 320px;
-  text-align: center;
-  color: white;
-}
-h1 {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 72px;
-  line-height: 84px;
-}
-.row {
-  margin: 20% 0;
-  width: 100%;
-  font-size: 1.5rem;
-}
-.btn-primary {
-  background-color: #016098;
-  border-radius: 20px;
-  color: white;
-  font-size: 1em;
-  height: 62px;
-  left: 627px;
-  width: 173px;
-  margin: 10px;
-  border: 1px solid;
-  cursor: pointer;
-  box-shadow: 0 8px 16px 0 rgba(214, 211, 211, 0.2),
-    0 6px 20px 0 rgba(241, 241, 241, 0.19);
-}
-.bot-container{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: none; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: auto;
+    /* padding: 20px; */
+    border: 1px solid #888;
+    width: 350px;
+    height: 450px;
+    overflow: scroll;
+  }
+  .bot-header{
+      display: flex;
+      justify-content: space-between;
+      margin: 7px 10px;
+  }
+  .bot-logo{
+      width: 40%;
+  }
+  /* The Close Button */
+  .close {
+    color: #4A022C;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-}
-.bot-bg{
-    background: url('https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png');
-    width: 100%;
-    min-height: 100%;
-}
-
-.bot-content{
-    margin: 20% 0;
-    text-align: center;
-}
+  .bot-content{
+      display: flex;
+      justify-content: space-between;
+  }
+  .bot-text{
+      margin: 150px 20px;
+      color: #fff;
+  }
+  .botAnimatedText{
+      display: flex;
+  }
+  .animate{
+      margin-left: 10px;
+  }
+  .bot-text h1{
+    font-size: 40px;
+  }
+  .bot-text p{
+      font-size: 30px;
+  }
+  .bot-image{
+      margin: 80px 0;
+  }
+  .nemean{
+      width: 80%;
+  }
+  @keyframes example {
+    0%   {border: 1px solid rgb(120, 139, 202);}
+    25%  {border: 1px solid rgb(173, 101, 190);}
+    50%  {border: 1px solid rgb(169, 156, 216);}
+    100% {border: 1px solid rgb(182, 136, 122);}
+  }
+  #myBtn{
+      border: 1px solid #fff;
+      background: none;
+      padding: 20px;
+      color: #fff;
+      border-radius: 5px;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      cursor: pointer;
+  }
+  @media(max-width:800px){
+      .bot-content{
+          flex-direction: column;
+      }
+      .bot-text{
+        text-align: center;
+        font-size: 10px;
+      }
+      .bot-image{
+          display: none;
+      }
+  }
