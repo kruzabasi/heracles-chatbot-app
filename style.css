@@ -46,10 +46,10 @@ body{
    }
    
    .actions {
-    position: fixed;
+    position: relative;
     left: auto;
     right: auto;
-    bottom: auto; 
+    /* bottom: ;  */
     display: block;
     background: none;
     max-width: 200px;
@@ -63,15 +63,16 @@ body{
     /* padding: 10px; */
     background: none;
     display: block;
-    width: 250px;
+    width: 200px;
     outline: 0;
     border: none;
-    margin-left:10px; 
+    margin-left:0px; 
+    padding: 10px;
    }
    .btn{
        border: none;
        background: none;
-       margin-left: 90px;
+       margin-left: 70px;
        outline: none;
    }
 
@@ -79,14 +80,14 @@ body{
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: absolute; /* Stay in place */
+    z-index: 1; 
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: none; /* Enable scroll if needed */
+    overflow: scroll; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
