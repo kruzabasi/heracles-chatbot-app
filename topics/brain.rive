@@ -159,18 +159,18 @@
 + 1234
 - 5678
 
-+ what * is * time
++ [*] what * time [*]
 - The time is <time>.
 
-+ what * date
++ [*] what * date [*]
 - Today's date is <date>.
 
-+ hng
++ xxxhng
 - HNG is a non-profit organization aimed at bringing developers from all over Africa under the it's umbrella to enable them get internships in companies.
 - The HNG Internship is an ambitious attempt to change the way education is done in Africa. It's the bridge between learning to code, and becoming the best in the world.
 
 + [*] what [*] is [*] hng [*]
-- @hng
+- {@xxxhng}
 
 + [*] (version|number) * hng
 - This is the HNG 6.0 internship program.
@@ -180,6 +180,9 @@
 
 + who (was|is) the former [*] (chief executive officer|leader|founder) of hng
 - The former CEO of HNG is Mark Essien, he handed power over to @xyluz on the 11th of August 2019.
+
++ who [(was|is)] [*] (founder|creator|founded|created) * hng
+- The founder of hng is Mark Essien.
 
 + who is the (chief executive officer|leader) of hng [*]
 - The CEO of HNG is Seyi Onifade @xyluz
@@ -318,7 +321,7 @@
 - Critical thinking can sometimes help.
 
 + [*] hng [*]
-- @hng
+- {@xxxhng}
 
 + *
 - Sorry, I couldn't get what you said.{weight=1}
