@@ -24,6 +24,7 @@ window.onclick = function(event) {
 }
 
 
+
 let bot = new RiveScript();
 
 const message_container = document.querySelector('.messages');
@@ -31,7 +32,7 @@ const form = document.querySelector('form');
 const input_box = document.querySelector('input');
 
 const brains = [
-  'https://gist.githubusercontent.com/benjamin-bala/6ad440da644d80c33f22e6266c087d0c/raw/17ad459de274b80f29095d3bf9383a29132f8227/brain.rive'
+  'https://gist.githubusercontent.com/benjamin-bala/6ad440da644d80c33f22e6266c087d0c/raw/ecf426567e926cec48f6dda8b5adf5bfe0943983/brain.rive'
 ];
 const anagram =[
 'https://gist.githubusercontent.com/benjamin-bala/984cfdacdd7e89aa86f58bb04948daec/raw/2273bbcd7bc9504a50fbbd3774c3a50c550fa73a/anagram.rive'
@@ -61,7 +62,7 @@ function selfReply(message){
 
 function botReady(){
   bot.sortReplies();
-  botReply('Hello');
+  botReply('Hello, What is your name?');
 }
 
 function botNotReady(err){
