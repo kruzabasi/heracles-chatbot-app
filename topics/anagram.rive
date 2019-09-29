@@ -1,11 +1,12 @@
 //Simple anagram game
 ! sub *stop = ssstop
+! array yes = by all means|absolutely|why not|go on
 
 > topic game
-  + yes
+  + [*] @yes [*]
   * <get last> == game => To stop playing game, just notify by sending me *stop.\nUnscramble the word below.\n{@question}
   
-  + no
+  + [*] no [*]
   * <get last> == game => Very well then.{topic=random}
 
   + mark
@@ -133,7 +134,7 @@
 * loot == <get last> => Correct!\n\n{@question}
 
 + slot
-* lots == <get last> => Correct!\n\n{@question}
+* lots == <get last> => Correct!\n\n{@question}<set last=null>
 
 + ssstop
 - You ended the game.{topic=random}
