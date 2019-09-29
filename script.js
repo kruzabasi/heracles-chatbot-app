@@ -58,7 +58,7 @@ function botReply(message){
   message_container.innerHTML += `<p class='testbot'></p>
                   <div class="bot">${message}</div>`;
   classesbot = document.getElementsByClassName('testbot');
-  classesbot[j].innerHTML= day[new Date().getDay()] + " , " + month[new Date().getMonth()] + " , " + new Date().getFullYear() +' || ' + new Date().getHours() + ":" + addZero(new Date().getMinutes());
+  classesbot[j].innerHTML= new Date().getHours() + ":" + addZero(new Date().getMinutes());
  //increment variable, so next timestamp will not affect previous
   j= j+1;
   location.href = '#edge';
@@ -79,7 +79,7 @@ function selfReply(message){
     botReply(reply);
   });
 
-  classes[i].innerHTML= day[new Date().getDay()] + " , " + month[new Date().getMonth()] + " , " + new Date().getFullYear() +' || ' + new Date().getHours() + ":" + addZero(new Date().getMinutes());
+  classes[i].innerHTML= new Date().getHours() + ":" + addZero(new Date().getMinutes());
      i= i+1;
   location.href = '#edge';
 
