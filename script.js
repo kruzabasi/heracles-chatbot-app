@@ -45,18 +45,53 @@ form.addEventListener('submit', (e) => {
   input_box.value = '';
 });
 
+//days array
+var day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursdäy", "Friday", "Saturday"];
+//months array
+var month = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//to distinuish each msg timestamp fro the other
+var j = 0;
+//get all classes in an array,same class name tho
+var classesbot = [];
 function botReply(message){
-  message_container.innerHTML += `<div class="bot">${message}</div>`;
+  message_container.innerHTML += `<p class='testbot'></p>
+                  <div class="bot">${message}</div>`;
+  classesbot = document.getElementsByClassName('testbot');
+  classesbot[j].innerHTML= day[new Date().getDay()] + " , " + month[new Date().getMonth()] + " , " + new Date().getFullYear() +' || ' + new Date().getHours() + ":" + addZero(new Date().getMinutes());
+ //increment variable, so next timestamp will not affect previous
+  j= j+1;
   location.href = '#edge';
+
+
 }
 
+//same procedure as above
+var i = 0;
+var classes = [];
 function selfReply(message){
-  message_container.innerHTML += `<div class="self">${message}</div>`;
-  location.href = '#edge';
+  
+  message_container.innerHTML += `<p class='testself'></p>
+                  <div class="self">${message}</div>`;
+  classes = document.getElementsByClassName('testself');
   
   bot.reply("local-user", message).then(function(reply) {
     botReply(reply);
   });
+
+  classes[i].innerHTML= day[new Date().getDay()] + " , " + month[new Date().getMonth()] + " , " + new Date().getFullYear() +' || ' + new Date().getHours() + ":" + addZero(new Date().getMinutes());
+     i= i+1;
+  location.href = '#edge';
+
+
+}
+function addZero(minute){ //incase minute is returned as a single number, add a '0' to it as prefix
+if (minute < 10)
+{
+    return ("0"+minute); 
+}
+else{            
+    return minute;
+}
 }
 
 function botReady(){
