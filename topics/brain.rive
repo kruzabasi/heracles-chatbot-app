@@ -6,7 +6,6 @@
 	^ i want to leave|i need to go|i going|i leaving
 ! array fine = fine good great awesome cool wonderful
 ! array not = not never
-! array disqualified = chased out|withdrawn disqualified nullified
 ! array lol = lol haha hahaha hahahaha hahahaha lmao rotfl
 ! sub i'm     = i am
 ! sub *stop = ssstop
@@ -248,11 +247,17 @@
 - The guy doesn't joke, he's a savage <get name>, one wrong move and he takes you there...\n His name is @paul by the way.
 - His name is @paul.
 
-+ [*] how to avoid (trouble|underworld|punishment|@disqualified)
++ [*] how to avoid [*](trouble|underworld|punishment|disqualified|nullified|chased out)
 - {@avoidunder}
 
++ [*] who is @paul [*]
+- @paul is the keeper of the underworld.
+
++ [*] what is [*] underworld.
+-{@bbbunderworld}
+
 + avoidunder 
-- Do not post on the wrong channel.\nDo not stir up troubles.\n Do no use profane words. \n Do not cheat as it'll get you disqualified!
+- Do not post on the wrong channel.\nDo not stir up troubles.\nDo not use profane words. \nDo not cheat as it'll get you disqualified!
 
 + bbbunderworld
 - The underworld is a place where HNG defaulters are kept.
