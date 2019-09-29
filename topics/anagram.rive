@@ -1,6 +1,6 @@
 //Simple anagram game
 ! sub *stop = ssstop
-! array yes = by all means|absolutely|why not|go on
+! array yes = by all means|absolutely|why not|go on|yes
 
 > topic game
   + [*] @yes [*]
