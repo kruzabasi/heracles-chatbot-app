@@ -195,7 +195,7 @@ body{
       .bot-text{
         text-align: center;
         font-size: 10px;
-        margin-left:0px;
+        /* margin-left:0px; */
       }
       .bot-image{
           display: none;
