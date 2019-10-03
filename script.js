@@ -9,17 +9,20 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
+  bot_content.style.visibility = 'hidden';
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  bot_content.style.visibility = 'visible';
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    bot_content.style.visibility = 'visible';
   }
 }
 
@@ -44,6 +47,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   selfReply(input_box.value);
   input_box.value = '';
+  input_box.focus();
 });
 
 //days array
@@ -55,7 +59,7 @@ var j = 0;
 //get all classes in an array,same class name tho
 var classesbot = [];
 function botReply(message){
-  message_container.innerHTML += `<p class='testbot'></p>
+  message_container.innerHTML += `<p class='testbot' style='margin-bottom:0'></p>
                   <div class="bot">${message}</div>`;
   classesbot = document.getElementsByClassName('testbot');
   classesbot[j].innerHTML= new Date().getHours() + ":" + addZero(new Date().getMinutes());
@@ -77,6 +81,7 @@ function selfReply(message){
   
   bot.reply("local-user", message).then(function(reply) {
     botReply(reply);
+    input_box.focus();
   });
 
   classes[i].innerHTML= new Date().getHours() + ":" + addZero(new Date().getMinutes());
@@ -98,6 +103,7 @@ else{
 function botReady(){
   bot.sortReplies();
   botReply('Hello, What is your name?');
+  input_box.focus();
 }
 
 function botNotReady(err){
