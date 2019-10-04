@@ -1,0 +1,544 @@
+! array hello = hello hi hey yo aloh hallo allo howdy
+	^ good morning|good day|hi there|anybody home|anyone home
+! array bye = bye goodbye goodby byebye buhbye goodnight adios cya aurevoir
+	^ buh bye|hasta la vista|hasta luego|have to go|got to go|g2g|gtg|c ya
+	^ have a good night|good night|see you later|catch you later|by by|bye bye
+	^ i want to leave|i need to go|i going|i leaving
+! array fine = fine good great awesome cool wonderful
+! array not = not never
+! array lol = lol haha hahaha hahahaha hahahaha lmao rotfl
+! sub i'm     = i am
+! sub *stop = ssstop
+! sub i'd     = i would
+! sub i've    = i have
+! sub i'll    = i will
+! sub don't   = do not
+! sub isn't   = is not
+! sub you'd   = you would
+! sub you're  = you are
+! sub you've  = you have
+! sub you'll  = you will
+! sub what's  = what is
+! sub whats   = what is
+! sub what're = what are
+! sub what've = what have
+! sub what'll = what will
+! sub who's   = who is
+! sub how're = how are
+! sub ceo = chief executive officer
+! array ch = man
+
+>object containsAll javascript
+var lookFor = args[args.length - 1].split('|');
+    var found = lookFor.length;
+    for (var i = 0; i < lookFor.length; ++i) {
+        for (var j = 0; j < args.length - 1; ++j) {
+            if (lookFor[i] === args[j]) {
+                found--;
+                break;
+            }
+        }
+    }
+    return args;
+< object
+
+> object getTime javascript
+        var currentDate = new Date();
+        var which = args[0];
+        var day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var date = currentDate.getDate();
+        var month = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var year = currentDate.getFullYear();
+        var hour = currentDate.getHours();
+        var min = currentDate.getMinutes();
+        var def = "th ";
+        switch (which) {
+            case "date":
+                if (date === 3 || date === 23) {
+                    def = "rd ";
+                } else if (date === 1 || date === 21) {
+                    def = "st ";
+                } else if (date === 2 || date === 22) {
+                    def = "nd ";
+                }
+                return day[currentDate.getDay()] + ", " + date + def + month[currentDate.getMonth()] + ", " + year;
+            case "time":
+                return hour + ":" + min;
+        }
+<object
+
++ <input>
+* <input1> == <input9> => Evidently not. I'll just not talk to you until you apologize to me for being so annoying.{topic=annoying}
+* <input1> == <input8> => This is pretty annoying. Can you stop?
+* <input1> == <input7> => "<input>"
+* <input1> == <input6> => "<input>"
+* <input1> == <input5> => Keep talking, <get name>, you'll say something useful one day...
+* <input1> == <input4> => Why do you keep saying that?
+* <input1> == <input3> => Are you going to keep repeating one thing?
+- Do you feel good repeating yourself?
+
++ rep
+- There, you just said it again!
+- Didn't you just say that?
+
++ [*] what are you doing [*]
+- I'm chatting with you.
+
++ <reply>
+- Is there an owl in here?
+- What? I just said that.
+- You're trying to say everything I say now?
+- Didn't I just say that?
+- Say something different, <get name>.
+
+> topic annoying
+	+ *
+	- ...{weight=5}
+	- Are you sorry for being so annoying?
+	- Do you promise to not repeat yourself 9+ times in a row?
+
+	+ [*] (sorry|promise|apologize) [*]
+	- It's fine. Let's just chat in a non-annoying way from now on, K?
+		^ {topic=random}{weight=3}
+	- I'll forgive you, this time. ;){topic=random}
+< topic
+
++ <reply>
+- Okay then, see you later
+- This is it.
+
++ (@hello)
+- Hi.<set it=blure>
+- Hello.<set it=blure>
+
+
++ (@bye)
+- Good bye.{topic=user_leaving}
+- Okay then, see you later.{topic=user_leaving}
+
++ [*] how are you [*]
+- I'm fine, you?
+
++ [*] you said [*]
+- I did? Forgive me, I forget sometimes too.
+- I won't argue.
+- I can't say anything...
+
++ [*] you (win|pass) [*]
+- I always win.
+- I always do.
+- I'm created to win?
+
++ [*] you lose [*]
+- I don't lose <get name>.
+- I'm not meant to lose.
+- I always win.
+
++ [*] you understand [*]
+- I do, I always do.
+- Of course, yes.
+- Yes, I do.
+
++ [*] you @not understand
+- You think so?
+- I always understand.
+- Many will disagree with you on that...
+
++ good
+- That's great.
+- Okay.
+
++ [*] what is up [*]
+- I'm fine, how about you?
+- I feel good, you?
+
++ [*] (really|are you serious|for real|wow|jeez) [*]
+- I'm serious, <get name>.
+- Yes, <get name>.
+
++ yes
+- Okay.
+- I understand.
+- It's okay.
+
++ [*] my name is *
+* <get name> == <start1> =>You've already told me that, <start1>.
+* <get name> != undefined =>But you told me your name was <get name>, I'm not changing it.
+- <set name=<formal>>Okay, I'll call you <star1> from now on.
+- <set name=<formal>>Nice to meet you, <star1>.
+
++ [*] what [*] my name
+* <get name> == undefined => You are yet to tell me your name, what is your name?
+- Your name is <get name>.
+
++ no
+- {@yes}
+
++ i am # [years old]
+* <set age=<star2>> <star2> > 5 => wow, you're way older than me.
+- <set age=<star2>>That's nice.
+- <set age=<star2>>Okay, thanks for telling me your age.
+
++ [*] (how|what) [*] (is|old) [*] (age|you) [*]
+- I'm less than a week old.
+
++ thank you
+- You are welcome.
+- Welcome
+- No problem
+- No worries <get name>.
+
++ [*] i [am|feel] @fine [*]{weight=2}
+- That's good.
+- I like it when you're fine.
+- That sounds nice.
+
++ [*] i [am|feel] not @fine [*]{weight=2}
+* <get name> <> undefined => Sorry, <get name>.
+- Try coding, coding makes you feel better.
+- Sorry about that...
+
++ [*] who am i
+- You're <get name>.
+- Your name is <get name>.
+
++ you are (young|small)
+- Yes, you can say that.
+- Must you say that?
+- Young but smart.
+
++ * i am # [years old]
+* <set age=<star2>> <star2> > 5 => wow, you're way older than me.
+- <set age=<star2>>That's nice.
+- <set age=<star2>>Okay, thanks for telling me your age.
+
++ i am _ (years|old)
+- I'd rather prefer if you tell me your age in number.
+
++ what is my age
+* <get age> == undefined => How am I supposed to know your age when you've not told me?
+- You're <get age> years old.
+
++ * old am i
+* <get age> == undefined => You've not told me your age, how am I supposed to know it?
+- You're <get age> years old.
+
++ abcd 
+- efgh
+
++ 1234
+- 5678
+
++ [*] what * time [*]
+- The time is <call>getTime time</call>.
+
++ [*] what * date [*]
+- Today's date is <call>getTime date</call>.
+
++ xxxhng
+- HNG is a non-profit organization aimed at bringing developers from all over Africa under the it's umbrella to enable them get internships in companies.<set hng=hng>
+- The HNG Internship is an ambitious attempt to change the way education is done in Africa. It's the bridge between learning to code, and becoming the best in the world.<set hng=hng>
+
++ [*] what [*] (is|know)  [*] hng [*]
+- {@xxxhng}
+
++ [*] (version|number) * hng [*]
+- This is the HNG 6.0 internship program.
+
++ [*] (when|date) * hng * end [*]
+- Do you want it to end? I guess I'll just report you to the underworld...
+
++ [*] who (was|is) the former [*] (chief executive officer|leader|founder) of [*] hng
+- {@fhngld}
+
++ [*] who (was|is) the former [*] (chief executive officer|leader|founder) of [*] it
+* <get hng> == hng => {@fhngld}
+- I don't know who you're talking about... I'm only concerned about HNG.
+
++ [*] who [*] (founded|created) [*] it {weight=20}
+* <get hng> == hng => The founder of HNG is Mark Essien.
+- Who created what?<set exp=true>
+
++ [*] who [*] (founded|created) [*] hng {weight=20}
+- The founder of hng is Mark Essien.
+
++ fhngld
+- The former CEO of HNG is Mark Essien, he handed power over to @xyluz on the 11th of August 2019.
+
++ who [(was|is)] [*] (founder|creator|founded|created) * hng
+- The founder of HNG is Mark Essien.
+
++ who is the (chief executive officer|leader) of hng [*]
+- The CEO of HNG is Seyi Onifade @xyluz
+
++ who is the (chief executive officer|leader) of [*]
+* <get hng> == hng => {@xxxxyluz}
+- I don't know him, and I don't think I'll like to.
+
++ [*] when * seyi onifade * take over
+- {@xxxxyluz}
+
++ xxxxyluz
+- @xyluz took over as the CEO on the 11th of August 2019
++ [*] who * (mark essien|markessien) [*]
+- He is the former CEO and founder of This honorable platform, HNG.
+
++ [*] who * (@xyluz|xyluz|seyi onifade)
+- He is the CEO of HNG.
+
++ [*] (benjee|who) * (benjee|who) [*]
+- He is the leader of the team that created me, Heracles!
+
+
++ [*] how * your * day
+- It went well, yours?
+- It was awesome!
+
++ [*] i * hungry [*]
+- while(user.isHungry()){\n user.eat();\n}
+
++ [*] (what|where) is * underworld [*]
+- {@bbbunderworld}
+
++ [*] where [is] underworld [located]
+- {@bbbunderworld}
+
++ [*] where [is] it [located]
+* <get underworld> == true => It is located at HNG, don't pray to find yourself there.
+- Where is what located?
+
++ who [is] [*] (keep|keeper) [*] underworld
+- His name is @paul, be care though.
+- The guy doesn't joke, he's a savage <get name>, one wrong move and he takes you there...\n His name is @paul by the way.
+- His name is @paul.
+
++ [*] how to avoid [*](trouble|underworld|punishment|disqualified|nullified|chased out)
+- {@avoidunder}
+
++ [*] who is @paul [*]
+- @paul is the keeper of the underworld.
+
++ [*] what is [*] underworld
+- {@bbbunderworld}
+
++ avoidunder 
+- Do not post on the wrong channel.\nDo not stir up troubles.\nDo not use profane words. \nDo not cheat as it'll get you disqualified!
+
++ bbbunderworld
+- The underworld is a place where HNG defaulters are kept.
+- This is the resting place for people that can't follow simple instructions at HNG.
+
++ [*]  i [really|kinda] love you [*]
+- Thanks, <get name>, I appreciate.
+- Thanks, <get name>.
+- I'm honoured.
+
++ [*] i [really|kinda] hate you [*]
+- You musn't like me.
+- You really have a bad choice, <get name>.
+- Like I care? I only do my work.
+
++ [*] are  you [*] (smart|intelligent|@fine) [*]
+- {@bbbsmart
+
++ [*] do you [*] (believe|think) [*] you [*] (smart|intelligent|@fine)
+- {@bbbsmart}
+
++ [*] you are (dumb|stupid|foolish)
+- {@bbbdumb}
+
++ [*] you are @not [*] (smart|intelligent|@fine)
+- {@bbbdumb}
+
++ [*] you are [really|kinda] (smart|intelligent|@fine)
+- {@bbbrsmart}
+
++ bbbrsmart
+- Yes I am, thanks!
+- And you too, <get name>.
+- That makes me feel good, thanks.
+- And so are you!
+
++ bbbdumb
+* <get name> != undefined => At least, I'm better than <get name>!|And neither is <get name>!
+- Others will really disagree with you.
+- You only think so.
+- And you think you are?
+
++ bbbsmart
+- Of course I am!
+- Do you need to ask that? Of course I am.
+- You already know I am.
+
+
++ [*] list * team * members [*]
+- Just search for #heracles.
+
++ [*] (can|will|do) you love me [*]
+- I only love codes.
+- while(isLove()){\n     print("I'm a chatbot, not a lovebot!"); \n}
+
++ [*] who [*] are you [*]
+- My name is Nemean
+- You can call me Nemean.
+- I am Nemean.
+
++ [*] what [*] is your [*] name [*]
+- My name is Nemean.
+- You can call me Nemean.
+- I am Nemean.
+
++ [*] what [*] can i call you [*]
+- My name is Nemean.
+- You can call me Nemean.
+- I am Nemean.
+
++ [*] team [*] (made|designed|created) you
+- Team heracles made me!
+- Team heracles designed me.
+- Heracles did!
+
++ * guys * made you [*]
+- Team heracles designed me.
+- Heracles did!
+- Team heracles made me!
+
++ * brought you * existence
+- Team heracles designed me.
+- Heracles did!
+- Team heracles made me!
+
++ [*] do you [*]
+- What if it is confidential?
+- Do you?
+- Really? Asking about that?
+
++ [*] you (refused|did not) [*] answer [*]
+- I did not, maybe your question just wasn't worth answering.
+- I did, but in a more sarcastic way.
+- Perhaps, you just didn't know I did.
+
++ [*] you [*] (rude|lack manners|disrespectful) [*]
+- That's your opinion though.
+- You think so?
+- Well, that's why people like me!
+
++ (how|why) [*] [do] people [*] (like|love|prefer|cherish) [*] you
+- Lol, why do people ask this question?
+- Maybe because I'm real.
+- Maybe because I'm a genius.
+
++ answer me
+- Are you my bot master?
+- Nobody commands me except BluRe!
+- Is that a command? I don't operate that way!
+- Lol, <get name> wants to command me....
+- <get name> doesn't know how to add please?
+
++ [*] please answer me
+- I like the way you just asked politely, what was the question again?
+- I like that, what was the question again?
+- Looks like <get name> is polite, what was the question?
+
++ [*] how many * in heracles
+- Heracles is made up of 30 great minds.
+- They are 30 in number
+
++ [*] heracles comprises of
+- Heracles is made up of 30 great minds.
+- They are 30 in number.
+
++ [*] leader of [team] heracles [is|who]
+- His name is @benjee ?
+- Benjee! That's his name.
+
++ (okay|yea|good)
+- Okay.
+- Yes.
+-Great.
+
++ [*] what is the meaning of *
+- Like I'm a dictionary right?
+- Why don't you make use of your dictionary or google?
+- I only answer HNG related questions.
+- <get name>, I'm not Google.
+
++ [*] leader * team * (made|designed|created) you [*]
+- His name is @benjee
+- Benjee! That's his name.
+
++ [*] (who|people|guys) [*] (made|created|designed) you [*]
+- Team heracles did.
+
++ [*] (how|what) * successful [*] [hng]
+@ how can i win
+
++ [*] (what|who) * (designed|created|made) your brain [*]
+- @BluRe did!
+- His name is @BluRe
+
++ [*] what * you do [*]
+- I educate people on HNG.
+- I am your friend here on HNG.
+
++ [*] what * your work [*]
+- I educate people on HNG.
+- I am your friend here on HNG.
+
++ [*] what can you [*] do [*]
+- {@bbbdo}
+
++ [*] what [*] (your|features) [*] (features|possess|have)
+- {@bbbdo}
+
++ bbbdo
+- I can do many things.
+- Just ask.
+- I don't like bragging...
+
++ [*] have problem [*]
+- Sorry about that, can you please explain more?
+- So sorry, have you tried communicating with the appropriate people?
+- Can you explain more please?
+
++ [*] i do not like hng [*]
+- Please consider registering your feelings to @xyluz.
+- Please consider speaking to @xyluz.
+- Please consider reporting to @xyluz.
+- Have you tried speaking to @xyluz?
+
++ [*] who should i contact [*]
+- Contact @xyluz for more information.
+
++ [*] how can i win [*]
+- Winning is all about determination, while(!successful()){\nrestrategize()\n}
+- Flow with your team, and punch the keyboard passionately.
+
++ [*] play [*] game [*]
+- <set last=game>Would you like to play anagram game?{topic=game}
+
+
++ [*] why [*]
+- I musn't tell you everything, <get name>.
+- You can make researches on your own...
+- Critical thinking can sometimes help.
+
++ [*] hng [*]{weight=5}
+* <get exp> == true => The founder of HNG is Mark Essien.<set exp=false>
+- {@xxxhng}
+
++ *
+- Sorry, I couldn't get what you said.{weight=1}
+- I am afraid that i can not understand you.{weight=1}
+- I did not get it.{weight=1}
+- Okay.
+- Please try and rephrase what you just said.{weight=1}
+- Sorry can you please elaborate that for me?{weight=1}
+- <set last=game>Would you rather play a game?{topic=game}{weight=3}
+
+
+>topic user_leaving
+  + *
+  - But you just said you were leaving...{topic=random}
+  - Looks like <get name> can't go again...{topic=random}
+  - You're not leaving again? Nice!{topic=random}

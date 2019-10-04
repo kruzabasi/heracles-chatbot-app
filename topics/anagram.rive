@@ -1,0 +1,147 @@
+//Simple anagram game
+! sub *stop = ssstop
+! array yes = by all means|absolutely|why not|go on|yes
+
+> topic game
+  + [*] @yes [*]
+  * <get last> == game => To stop playing game, just notify by sending me *stop.\nUnscramble the word below.\n{@question}
+  
+  + [*] no [*]
+  * <get last> == game => Very well then.{topic=random}
+
+  + mark
+  * mkra == <get last> => Correct!\n\n{@question}
+
+  + rat
+  * art == <get last> => Correct!\n\n{@question}
+
+  + root
+  * roto == <get last> => Correct!\n\n{@question}
+
+  + hire
+* heir == <get last> => Correct!\n\n{@question}
+
++ when
+* hewn == <get last> => Correct!\n\n{@question}
++ shoe
+* hoes == <get last> => Correct!\n\n{@question}
++ shot
+* host == <get last> => Correct!\n\n{@question}
+
++ bush
+* hubs == <get last> => Correct!\n\n{@question}
+
++ coin
+* icon == <get last> => Correct!\n\n{@question}
+
++ aide
+* idea == <get last> => Correct!\n\n{@question}
+
++ lied
+* idle == <get last> => Correct!\n\n{@question}
+
++ chin
+* inch == <get last> => Correct!\n\n{@question}
+
++ skin
+* inks == <get last> => Correct!\n\n{@question}
+
++ time
+* item == <get last> => Correct!\n\n{@question}
+
++ jets
+* jest == <get last> => Correct!\n\n{@question}
+
++ just
+* juts == <get last> => Correct!\n\n{@question}
+
++ lake
+* kale == <get last> => Correct!\n\n{@question}
+
++ knee
+* keen == <get last> => Correct!\n\n{@question}
+
++ links
+* kinls == <get last> => Correct!\n\n{@question}
+
++ skis
+* kiss == <get last> => Correct!\n\n{@question}
+
++ keen
+* knee == <get last> => Correct!\n\n{@question}
+
++ slag
+* lags == <get last> => Correct!\n\n{@question}
+
++ leak
+* lake == <get last> => Correct!\n\n{@question}
+
++ balm
+* lamb == <get last> => Correct!\n\n{@question}
+
++ palm
+* lamp == <get last> => Correct!\n\n{@question}
+
++ slap
+* laps == <get last> => Correct!\n\n{@question}
+
++ salt
+* last == <get last> => Correct!\n\n{@question}
+
++ slay
+* lays == <get last> => Correct!\n\n{@question}
+
++ deal
+* lead == <get last> => Correct!\n\n{@question}
+
++ lake
+* leak == <get last> => Correct!\n\n{@question}
+
++ keel
+* leek == <get last> => Correct!\n\n{@question}
+
++ felt
+* left == <get last> => Correct!\n\n{@question}
+
++ gels
+* legs == <get last> => Correct!\n\n{@question}
+
++ rail
+* liar == <get last> => Correct!\n\n{@question}
+
++ idle
+* lied == <get last> => Correct!\n\n{@question}
+
++ mile
+* lime == <get last> => Correct!\n\n{@question}
+
++ kiln
+* link == <get last> => Correct!\n\n{@question}
+
++ slip
+* lips == <get last> => Correct!\n\n{@question}
+
++ slit
+* list == <get last> => Correct!\n\n{@question}
+
++ cool
+* loco == <get last> => Correct!\n\n{@question}
+
++ lion
+* loin == <get last> => Correct!\n\n{@question}
+
++ tool
+* loot == <get last> => Correct!\n\n{@question}
+
++ slot
+* lots == <get last> => Correct!\n\n{@question}<set last=null>
+
++ ssstop
+- You ended the game.{topic=random}
+
++ question
+- <set last={random}art|roto|mkra|heir|hewn|hoes|host|hubs|icon|idea|idle|inch|inks|item|jest|juts|kale|keen|kiln|kiss|knee|lags|lake|lamb|lamp|laps|last|lays|lead|leak|leek|left|legs|liar|lied|lime|link|lips|list|loco|loin|loot|lots{/random}><get last>
+
++ *
+* <get last> == game => You're meant to answer with only yes or no!{topic=random}
+- Wrong!\n\n{@question}

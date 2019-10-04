@@ -1,13 +1,203 @@
-.bot-container{
+body{
+    background: url('https://res.cloudinary.com/benjee/image/upload/v1569416479/Group_3_kz2uek.png');
+    font-family: 'Be Vietnam', sans-serif;
+    height:100vh;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+* {
+    font-family: 'Simonetta', cursive;
+    font-size: 12pt;
+   }
+   .contain{
+       height:100%;
+   }
+   .bot-conversation{
+       display: grid;
+       grid-template-columns: 1fr;
+   }
+   .chat {
+       display: grid;
+       grid-template-columns: 1fr;
+       background: #fff;
+    /* width: 350px; */
+    height: 341px;
+    padding: 10px;
+    overflow: scroll;
+   }
+   .messages div {
+    max-width: 200px;
+    display: block;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 15px;
+    word-wrap: break-word;
+   }
+   .messages .bot {
+    text-align: left;
+    margin-right: auto;
+    background: #DDD;
+    color: black;
+    word-wrap: break-word;
+    margin-top:0;
+   }
+   .messages .self {
+    text-align: left;
+    margin-left: 50%;
+    background: #4A022C;
+    word-wrap: break-word;
+    color: white;
+    margin-top: 0;
+   }
+    .testself{
+       text-align:right;
+       word-wrap: break-word;
+       margin-bottom: 0;
+   }
+   
+   .actions {
+    position: relative;
+    left: auto;
+    right: auto;
+    /* bottom: ;  */
+    display: block;
+    background: none;
+    max-width: 200px;
+    width: auto;
+    /* height: 40px; */
+    /* padding: 0 0px; */
+    display: flex;
+    justify-content: space-between;   
+   }
+   .actions input{ 
+    /* padding: 10px; */
+    background: none;
+    display: block;
+    width: 200px;
+    outline: 0;
+    border: none;
+    margin-left:0px; 
+    padding: 10px;
+   }
+   .btn{
+       border: none;
+       background: none;
+       margin-left: 70px;
+       outline: none;
+   }
 
-}
-.bot-bg{
-    background: url('https://res.cloudinary.com/benjee/image/upload/v1569248286/Group_ssy7oh.png');
-    width: 100%;
-    min-height: 100%;
-}
 
-.bot-content{
-    margin: 20% 0;
-    text-align: center;
-}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; 
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: scroll; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: auto;
+    /* padding: 20px; */
+    border: 1px solid #888;
+    width: 350px;
+    height: 450px;
+    overflow: scroll;
+  }
+  .bot-header{
+      display: flex;
+      justify-content: space-between;
+      margin: 7px 10px;
+  }
+  .bot-logo{
+      width: 40%;
+  }
+  /* The Close Button */
+  .close {
+    color: #4A022C;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .bot-content{
+      display: flex;
+      justify-content: space-between;
+      height:100%;
+      line-height:50px;
+
+  }
+  .bot-text{
+      margin: 100px 50px;
+      margin-left:15vw;
+      color: #fff;
+  }
+  /* .botAnimatedText{
+      display: flex;
+  } */
+  .animate{
+      margin-left: 10px;
+  }
+  .bot-text h1{
+    font-size: 40px;
+  }
+  .bot-text p{
+      font-size: 40px;
+      text-align:center;
+  }
+  .bot-image{
+      margin: 80px 0;
+  }
+  .nemean{
+      width: 60%;
+      height:100%;
+      margin-right:5vw;
+  }
+  @keyframes example {
+    0%   {border: 1px solid rgb(120, 139, 202);}
+    25%  {border: 1px solid rgb(173, 101, 190);}
+    50%  {border: 1px solid rgb(169, 156, 216);}
+    100% {border: 1px solid rgb(182, 136, 122);}
+  }
+  #myBtn{
+      border: 1px solid #fff;
+      background: none;
+      padding: 20px;
+      color: #fff;
+      border-radius: 5px;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      cursor: pointer;
+  }
+  @media(max-width:800px){
+      .bot-content{
+          flex-direction: column;
+          height:100%;
+          text-align:center;
+      }
+      .bot-text{
+        text-align: center;
+        font-size: 10px;
+        /* margin-left:0px;  */
+      }
+      .bot-image{
+          display: none;
+      }
+  }
